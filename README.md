@@ -36,6 +36,37 @@ npx tsc --noEmit
 npm run build
 ```
 
+## Geschützte Kundenvorschau
+
+Die Vorschau wird in `.env` mit einmaligen, ausschließlich hierfür verwendeten
+Zugangsdaten aktiviert:
+
+```env
+PREVIEW_PROTECTION=true
+PREVIEW_USERNAME=blechregen
+PREVIEW_PASSWORD=<selbst gesetztes Vorschaupasswort>
+```
+
+Codex kann Dateien im Projektordner technisch lesen. Persönliche oder anderweitig
+verwendete Passwörter dürfen deshalb nicht in `.env` hinterlegt werden.
+
+Anschließend werden Produktionsserver und Cloudflare Quick Tunnel in zwei
+getrennten Terminals gestartet:
+
+```bash
+npm run build
+npm run preview:serve
+```
+
+```bash
+npm run preview:tunnel
+```
+
+Der Tunnel gibt eine zufällige HTTPS-Adresse unter `trycloudflare.com` aus. Der
+Mac, Docker, PostgreSQL, der Produktionsserver und der Tunnel müssen während der
+Kundenvorschau laufen. Der Payload-Adminbereich unter `/admin` verlangt nach der
+Vorschau-Anmeldung zusätzlich ein persönliches Payload-Konto.
+
 ## Wichtige Verzeichnisse
 
 - `src/app/(frontend)` – öffentliche Website
