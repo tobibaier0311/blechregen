@@ -98,9 +98,11 @@ export interface Config {
   };
   fallbackLocale: null;
   globals: {
+    'home-page': HomePage;
     'site-settings': SiteSetting;
   };
   globalsSelect: {
+    'home-page': HomePageSelect<false> | HomePageSelect<true>;
     'site-settings': SiteSettingsSelect<false> | SiteSettingsSelect<true>;
   };
   locale: null;
@@ -761,6 +763,68 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home-page".
+ */
+export interface HomePage {
+  id: number;
+  hero: {
+    eyebrow?: string | null;
+    headline: string;
+    text: string;
+    image?: (number | null) | Media;
+    primaryButtonLabel?: string | null;
+    secondaryButtonLabel?: string | null;
+  };
+  about: {
+    kicker?: string | null;
+    headline: string;
+    text: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    };
+    quote?: string | null;
+  };
+  music: {
+    kicker?: string | null;
+    headline: string;
+    text?: string | null;
+    features?:
+      | {
+          title: string;
+          text: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  events: {
+    kicker?: string | null;
+    headline: string;
+    emptyHeadline?: string | null;
+    emptyText?: string | null;
+  };
+  booking: {
+    kicker?: string | null;
+    headline: string;
+    text: string;
+    buttonLabel?: string | null;
+  };
+  _status?: ('draft' | 'published') | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "site-settings".
  */
 export interface SiteSetting {
@@ -810,6 +874,64 @@ export interface SiteSetting {
   };
   updatedAt?: string | null;
   createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home-page_select".
+ */
+export interface HomePageSelect<T extends boolean = true> {
+  hero?:
+    | T
+    | {
+        eyebrow?: T;
+        headline?: T;
+        text?: T;
+        image?: T;
+        primaryButtonLabel?: T;
+        secondaryButtonLabel?: T;
+      };
+  about?:
+    | T
+    | {
+        kicker?: T;
+        headline?: T;
+        text?: T;
+        quote?: T;
+      };
+  music?:
+    | T
+    | {
+        kicker?: T;
+        headline?: T;
+        text?: T;
+        features?:
+          | T
+          | {
+              title?: T;
+              text?: T;
+              id?: T;
+            };
+      };
+  events?:
+    | T
+    | {
+        kicker?: T;
+        headline?: T;
+        emptyHeadline?: T;
+        emptyText?: T;
+      };
+  booking?:
+    | T
+    | {
+        kicker?: T;
+        headline?: T;
+        text?: T;
+        buttonLabel?: T;
+      };
+  _status?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

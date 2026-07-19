@@ -12,6 +12,7 @@ import { Galleries } from './collections/Galleries'
 import { Musicians } from './collections/Musicians'
 import { Pages } from './collections/Pages'
 import { SiteSettings } from './globals/SiteSettings'
+import { HomePage } from './globals/HomePage'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -24,7 +25,7 @@ export default buildConfig({
     },
   },
   collections: [Users, Pages, Events, Musicians, Galleries, Media],
-  globals: [SiteSettings],
+  globals: [HomePage, SiteSettings],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
