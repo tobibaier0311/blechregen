@@ -1,19 +1,16 @@
+import type { Metadata } from 'next'
 import React from 'react'
 import './styles.css'
 
-export const metadata = {
-  description: 'A blank template using Payload in a Next.js app.',
-  title: 'Payload Blank Template',
+export const metadata: Metadata = {
+  description: 'BlechRegen – bayerisch-böhmische Blasmusik mit kolumbianischem Flair aus Regensburg.',
+  title: 'BlechRegen | Blasmusik zum Aufwachen',
 }
 
-export default async function RootLayout(props: { children: React.ReactNode }) {
-  const { children } = props
-
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body>
-        <main>{children}</main>
-      </body>
+    <html lang="de">
+      <body>{children}</body>
     </html>
   )
 }
