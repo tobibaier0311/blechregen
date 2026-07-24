@@ -1,17 +1,20 @@
 version: '3'
 
 services:
-  postgres:
+  payload:
+    build: .
+    container_name: payload
     restart: unless-stopped
-    image: postgres:17-alpine
-    environment:
-      POSTGRES_DB: blechregen
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+
     ports:
       - '5432:5432'
-    volumes:
-      - pgdata:/var/lib/postgresql/data
 
-volumes:
-  pgdata:
+    environment:
+      DATABASE_URI: postgresql://postgres:postgres@postgres:5432/blechregen
+
+    networks:
+      - homelab
+
+networks:
+  homelab:
+    external: true
