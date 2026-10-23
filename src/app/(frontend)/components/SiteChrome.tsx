@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import type { SiteSetting } from '@/payload-types'
 
@@ -9,21 +8,15 @@ const navigation = [
   ['Media', '/media'],
 ] as const
 
-function mediaURL(media: SiteSetting['logo']) {
-  return media && typeof media === 'object' && media.url ? media.url : '/images/blechregen-logo.jpg'
-}
-
 export function Header({ settings }: { settings: SiteSetting }) {
+  void settings
   return (
     <header className="site-header">
-      <Link className="brand" href="/" aria-label="BlechRegen – Startseite">
-        <Image alt="" className="brand-logo" height={56} src={mediaURL(settings.logo)} unoptimized width={56} />
-        <span className="brand-type">Blech<span>Regen</span></span>
-      </Link>
+      <Link className="brand" href="/" aria-label="BlechRegen – Startseite"><span className="brand-type">Blech<span>Regen</span><b>✳</b></span></Link>
       <nav className="desktop-nav" aria-label="Hauptnavigation">
         {navigation.map(([label, href]) => <Link href={href} key={href}>{label}</Link>)}
       </nav>
-      <Link className="button button-accent header-cta" href="/booking">Booking</Link>
+      <Link className="button button-accent header-cta" href="/booking">Buch uns ↗</Link>
       <details className="mobile-menu">
         <summary aria-label="Menü öffnen"><span /><span /></summary>
         <nav aria-label="Mobile Navigation">
@@ -41,10 +34,7 @@ export function Footer({ settings }: { settings: SiteSetting }) {
   const instagram = settings.socialMedia?.instagram || 'https://www.instagram.com/blechregen/'
   return (
     <footer className="site-footer">
-      <div className="footer-lead">
-        <p className="eyebrow">Von Bayern bis Bogotá</p>
-        <h2>Blasmusik,<br />die hängen bleibt.</h2>
-      </div>
+      <div className="footer-topline"><div className="footer-wordmark">Blech<span>Regen.</span></div><a href="#start">Zurück nach oben ↑</a></div>
       <div className="footer-columns">
         <div><strong>Direkt</strong><Link href="/booking">Booking</Link><Link href="/kontakt">Kontakt</Link><a href={`mailto:${email}`}>{email}</a></div>
         <div><strong>Folgen</strong><a href={instagram} rel="noreferrer" target="_blank">Instagram ↗</a>{settings.socialMedia?.youtube && <a href={settings.socialMedia.youtube} rel="noreferrer" target="_blank">YouTube ↗</a>}</div>

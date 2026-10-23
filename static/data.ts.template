@@ -1,0 +1,37 @@
+import type { Config, HomePage, SiteSetting } from '@/payload-types'
+import snapshot from './content.json'
+
+type Collection = 'events' | 'musicians' | 'galleries'
+
+// Die bestehenden Seiten lesen aus einer lokalen Momentaufnahme statt aus Payload.
+export async function getSiteData() {
+  const payload = {
+    async find<T extends Collection>(options: {
+      collection: T; limit?: number; sort?: string; depth?: number; overrideAccess?: boolean;
+      where?: { startDate?: { greater_than_equal: string } };
+    }): Promise<{ docs: Config['collections'][T][]; totalDocs: number }> {
+      let docs = [...snapshot[options.collection]] as unknown as Config['collections'][T][]
+      const cutoff = options.where?.startDate?.greater_than_equal
+      if (cutoff) docs = docs.filter(doc => 'startDate' in doc && new Date(doc.startDate).getTime() >= new Date(cutoff).getTime())
+      if (options.sort) {
+        const descending = options.sort.startsWith('-')
+        const field = options.sort.replace(/^-/, '')
+        docs.sort((a, b) => {
+          const av = (a as unknown as Record<string, unknown>)[field]
+          const bv = (b as unknown as Record<string, unknown>)[field]
+          const result = typeof av === 'number' && typeof bv === 'number' ? av - bv : String(av ?? '').localeCompare(String(bv ?? ''))
+          return descending ? -result : result
+        })
+      }
+      return { totalDocs: docs.length, docs: docs.slice(0, options.limit ?? docs.length) }
+    },
+  }
+  return { home: snapshot.home as unknown as HomePage, settings: snapshot.settings as unknown as SiteSetting, payload }
+}
+
+export function eventPlace(event: { venueName: string; address?: { city?: null | string } }) {
+  return [event.venueName, event.address?.city].filter(Boolean).join(' · ')
+}
+export const dateShort = new Intl.DateTimeFormat('de-DE', { day: '2-digit', month: 'short', timeZone: 'Europe/Berlin' })
+export const dateLong = new Intl.DateTimeFormat('de-DE', { day: '2-digit', month: 'long', year: 'numeric', timeZone: 'Europe/Berlin' })
+export const timeShort = new Intl.DateTimeFormat('de-DE', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Berlin' })

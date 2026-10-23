@@ -3,6 +3,38 @@
 Website und Redaktionssystem für BlechRegen auf Basis von Next.js, Payload CMS,
 TypeScript und PostgreSQL.
 
+## Statische Website für Netlify
+
+Für die vorläufige Veröffentlichung ohne Payload, Datenbank und Server:
+
+```bash
+npm ci
+npm run build:static
+```
+
+Der Ordner `dist/` enthält die vollständige Website einschließlich der Unterseiten
+und Bilder. Du kannst diesen Ordner direkt bei Netlify Drop hochladen. Bei einem
+Git-basierten Deployment liest Netlify die Einstellungen aus `netlify.toml`:
+Build-Befehl `npm run build:static`, Veröffentlichungsordner `dist`.
+Es werden keine Datenbank-Zugangsdaten oder sonstigen Umgebungsvariablen benötigt.
+
+Öffentliche Texte, Kontaktdaten, Musiker, Termine und Galerien werden für diese
+Version in `static/content.mjs` gepflegt. Die Ausgangstexte stammen aus der
+bestehenden Startseiten-Vorlage. Es werden keine CMS-Daten automatisch übernommen.
+Nach jeder Inhaltsänderung neu bauen und veröffentlichen. Termine werden beim
+Build nach Datum gefiltert; auch nach vergangenen Veranstaltungen erneut bauen.
+Bilder liegen unter `public/images/` und werden mitkopiert. Bei Galerien und
+Porträts statische Bildpfade verwenden, keine Payload-API-Adressen.
+
+Der E-Mail-Button öffnet das lokale Mailprogramm; die Website versendet selbst
+keine Nachrichten. Der Redaktionsbereich ist im statischen Export nicht enthalten.
+Die bestehende Payload-Anwendung bleibt mit `npm run dev` verfügbar. Der statische
+Build arbeitet in `.static-site/` und verändert ihren Quellcode nicht.
+
+Impressum und Datenschutz enthalten derzeit noch Entwurfshinweise und müssen vor
+dem endgültigen Livegang vervollständigt werden. Musikerporträts und bestätigte
+Termine können nachgetragen werden.
+
 ## Lokale Entwicklung
 
 Voraussetzungen:
