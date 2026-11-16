@@ -64,6 +64,16 @@ main :is(h1, h2, h3) { text-transform: uppercase; }
 .green-events article { border-top: 1px solid currentColor; padding-top: 24px; }
 .green-events time { display: block; margin-bottom: 12px; }
 .green-events h2, .green-events h3 { font-family: var(--sans); font-size: clamp(24px, 3vw, 32px); margin-bottom: 8px; }
+/* Frühere grüne Startseiten-Komposition; bewusst nur unterhalb des Heros. */
+.home-story-poster { gap: 40px; justify-content: center; }
+.concept-sound .concept-mixer { margin-top: 45px; }
+.home-members article { min-width: 0; }
+.home-members h3 { font-size: clamp(26px, 2.5vw, 32px); overflow-wrap: anywhere; }
+.home-member-photo { width: 100%; height: 200px; object-fit: cover; margin-bottom: 20px; }
+.home-live-events .green-appointment-date { font-family: var(--sans); font-size: 14px; font-weight: 400; }
+.home-live-events .green-appointment-detail p { font-size: 15px; line-height: 1.55; }
+.home-live-events .green-appointment-links a { font-size: 14px; text-decoration: underline; }
+.home-live-events .green-appointments-source, .home-live-events .green-appointments-source a { font-size: 13px; }
 .green-appointment-list { list-style: none; padding: 0; margin: 0; }
 .green-appointment-list > li { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 32px; align-items: start; border-top: 1px solid currentColor; padding-block: 28px; }
 .green-appointment-list > li:last-child { border-bottom: 1px solid currentColor; }
@@ -135,6 +145,7 @@ main :is(h1, h2, h3) { text-transform: uppercase; }
   .green-booking { gap: 40px; }
 }
 @media(max-width:580px) {
+  .concept-live .concept-heading { font-size: clamp(48px, 12vw, 68px); }
   .site-header { height: 76px; padding-inline: 18px; }
   .concept-hero { min-height: 0; }
   .concept-hero-inner { padding-top: 38px; padding-bottom: 48px; }

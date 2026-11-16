@@ -14,6 +14,13 @@ laufen. Quelldateien stehen unter `green/src/app/(frontend)/`, Bilder unter
 
 ## Veröffentlichung
 
+Live-Stand seit 16.11.2026: Der Nutzer hat alle Auftritte des gelieferten
+Exports für die Veröffentlichung freigegeben. Der automatische Terminabruf
+ist aktiviert; der Termin im Spitalgarten am 07.12.2026 um 19 Uhr wurde auf
+Startseite und Terminseite auf Desktop und Mobil geprüft. Beide Variablen
+sind in der Netlify-Produktionsumgebung hinterlegt. Bei zukünftigen Deployments
+diese Konfiguration erhalten und den Freigabe-Schalter nicht wieder deaktivieren.
+
 Die aktive `netlify.toml` im Repository-Stamm baut den grünen Export und bündelt
 die vorbereitete Funktion aus `green/netlify/functions/`. Kein Deployment ohne
 ausdrücklichen Auftrag des Nutzers.

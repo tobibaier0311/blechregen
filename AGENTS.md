@@ -13,7 +13,7 @@
 Der Nutzer hat folgende vier Hauptbereiche in dieser Reihenfolge festgelegt:
 
 1. **Band & Musik**: Musik und Band thematisch zusammenführen, nicht als zwei getrennte Hauptbereiche behandeln. Sowohl die Musik, die BlechRegen spielt, als auch die Musiker*innen bzw. die Kapelle vorstellen.
-2. **Termine**: Öffentliche Auftritte aus Konzertmeister in einer eigenen schlichten Liste auf Startseite und Terminseite zeigen. HTML-Export-Adapter und Netlify-Funktion sind vorbereitet, aber nicht aktiviert. Vor Aktivierung ausdrücklich prüfen, dass alle exportierten Termine veröffentlicht werden dürfen; den signierten Link nur serverseitig konfigurieren. Anleitung im README.
+2. **Termine**: Öffentliche Auftritte aus Konzertmeister in einer eigenen schlichten Liste auf Startseite und Terminseite zeigen. Der Nutzer hat ausdrücklich mit „ja“ bestätigt, dass sämtliche Auftritte aus dem übermittelten Export öffentlich erscheinen dürfen. Der Live-Abruf ist seit 16.11.2026 aktiviert und auf Desktop/Mobil geprüft: Spitalgarten-Termin am 07.12.2026 um 19 Uhr. Beide Produktionsvariablen sind auf der Netlify-Site gesetzt. Den signierten Link nur serverseitig konfigurieren und nie ins Repository oder den Browser übernehmen. Anleitung im README.
 3. **Media**: Fotos, Videos und Musikmitschnitte, sowohl als Audio als auch als Video. Nur tatsächlich vorhandene bzw. vom Nutzer bereitgestellte oder freigegebene Medien verwenden.
 4. **Buch uns / Booking**: Bereich für Buchungsanfragen. Die endgültige sichtbare Bezeichnung ist noch offen zwischen „Buch uns“ und „Booking“.
 
@@ -21,7 +21,9 @@ Die Navigation und die gemeinsame Seite unter `/band/` sind umgesetzt. `/musik/`
 
 **Startseite erhalten:** Der Nutzer hat ausdrücklich klargestellt, dass die bisherigen Abschnitte und Kernaussagen der grünen Startseite erhalten bleiben sollen: Hero, Genre-Laufband, Entstehungsgeschichte, Musik/Stil-Spielerei, Kapelle/Besetzung, Termine und Buchung. Die vier Hauptbereiche betreffen die Navigation und Unterseiten, nicht einen Ersatz der Startseite durch vier reine Übersichtsblöcke. Texte und Dekoration bereinigen, aber keine inhaltlichen Abschnitte stillschweigend streichen oder neu erfinden.
 
-Der Geschichtsabschnitt auf der Startseite trägt wieder die ausdrücklich gewünschte Überschrift „Erst a Maß. Dann a Idee.“. Daneben steht ein vereinfachtes gelbes Plakat mit „Oans / Zwoa / Hey!“, ohne zusätzliche Labels oder Zahlen. Der Einstiegstext ist auf zwei kurze Absätze reduziert; die ausführliche Geschichte bleibt auf „Band & Musik“.
+Der Nutzer hat zuletzt bestätigt: Den aktuellen Hero unverändert lassen und darunter den ursprünglichen grünen Aufbau wieder aufnehmen, insbesondere „Drei Welten. Ein Blech.“, die drei Musikkarten und die Musiker-Kacheln. Die vorherigen grünen Abschnittsfarben sowie der gelbe Live-Bereich und der korallfarbene Buchungsabschluss sind wieder aufgenommen. Keine erfundenen Musiker-Namen ergänzen: Ohne echte Personendaten tragen die sieben Kacheln nur die bekannten Instrumente. Die Veröffentlichung dieses Standes wurde ausdrücklich beauftragt; weitere Veröffentlichungen nur auf neuen Auftrag.
+
+Der Geschichtsabschnitt behält „Erst a Maß. Dann a Idee.“ und zwei kurze Absätze. Das Plakat hat wieder den früheren türkisen, leicht gedrehten Stil mit „Oans / Zwoa / Hey!“ und „Biergarten meets Bogotá.“, ohne zusätzliche Zahlen oder Kapitelmarker. Die ausführliche Geschichte bleibt auf „Band & Musik“.
 
 ## Abgestimmte Stilrichtung
 
@@ -32,7 +34,7 @@ Der Geschichtsabschnitt auf der Startseite trägt wieder die ausdrücklich gewü
 - Im Laufband Wort und Trennstern als gleichmäßig verteilte Elemente behandeln: identische Abstände auch über die Wiederholungsnaht, einheitliche SVG-Sterne und nahtloser linearer Durchlauf. Die erste komplette Genre-Folge füllt mindestens eine Bildschirmbreite; keine separat auseinandergezogenen Wortgruppen.
 - Im Hero wird testweise die vom Nutzer bereitgestellte PNG `BlechRegen Logo Transparent.png` anstelle der gezeichneten Trompete verwendet. Asset-Kopie unter `green/public/images/`; nicht das Original verändern. Die frühere Trompetenkomponente bleibt für einen möglichen Vergleich erhalten.
 - **Weniger beliebiger Text:** unnötige Labels, wiederholte Slogans und generische Werbetexte streichen. Inhalte sollen die Band, ihre Musik und das Angebot konkret erklären.
-- Die ruhigere, weniger templatehafte Komposition der blauen Version als Richtung übernehmen: klare Hierarchie, lesbare Texte und echte Bandinhalte statt dekorativer Textblöcke oder starrer, gleichförmiger Kartenraster.
+- Die ruhigere Komposition bleibt für Unterseiten eine Richtung. Ausnahme: Auf der Startseite hat der Nutzer ausdrücklich die ursprünglichen drei Musikkarten und die Besetzungs-Kacheln wiedergewünscht. Diese bestätigte Rückkehr zum früheren grünen Aufbau nicht erneut pauschal zugunsten offener Textblöcke entfernen. Klare Hierarchie, lesbare Texte und echte Bandinhalte bleiben maßgeblich.
 - Spielereien nicht pauschal entfernen: Die musikalische Stil-Spielerei wurde vom Nutzer ausdrücklich positiv bewertet. Gezielt und verständlich einsetzen, ohne Inhalte zu überlagern.
 - Der Verweis auf das blaue Design ist keine pauschale Freigabe für dessen Farbpalette oder sämtliche Details. Konkrete neue Farb-, Schrift- und Layoutentscheidungen bei Bedarf gemeinsam abstimmen.
 
@@ -59,6 +61,6 @@ Dazu Frontend Design und Product Designer nutzen. Bestehende Eigenschaften von n
 - Grüne Quellen liegen dauerhaft im Projekt unter `green/`, ausgehend von Commit `c5b3a54`. Die alte temporäre Kopie `/private/tmp/blechregen-green-UdOhtH` nicht mehr bearbeiten.
 - Start mit `npm run dev:green` unter `http://localhost:3004`; automatische Übernahme von Änderungen an grünen Quellen. Die blaue Vorschau auf Port 3003 bleibt gestoppt. Tatsächlichen Serverstatus jeweils prüfen.
 - Quellseiten: `green/src/app/(frontend)/`; ergänzende Stilregeln: `green/src/app/(frontend)/green.css`; Inhalte: `green/static/content.mjs`; Bilder: `green/public/`.
-- `npm run build:green` erzeugt `green/dist/`. Die aktive `netlify.toml` wurde auf ausdrücklichen Nutzerauftrag zur Veröffentlichung des grünen Designs auf diesen Export und `green/netlify/functions` umgestellt. Keine weiteren Deployments ohne Auftrag. Der Konzertmeister-Abruf bleibt bis zur bestätigten öffentlichen Freigabe deaktiviert.
+- `npm run build:green` erzeugt `green/dist/`. Die aktive `netlify.toml` wurde auf ausdrücklichen Nutzerauftrag zur Veröffentlichung des grünen Designs auf diesen Export und `green/netlify/functions` umgestellt. Keine weiteren Deployments ohne Auftrag. Der Konzertmeister-Abruf ist nach bestätigter öffentlicher Freigabe live aktiviert; beide Produktionsvariablen müssen bei zukünftigen Deployments erhalten bleiben. Nicht erneut mit `KONZERTMEISTER_PUBLIC_EXPORT_CONFIRMED=false` deployen.
 - `dist/`, `green/dist/` und generierte `.static-*`-/`.green-*`-Verzeichnisse nicht als Quelldateien bearbeiten.
 - Das Hauptprojekt enthält uncommittete Änderungen einschließlich der blauen Variante. Nicht pauschal zurücksetzen, überschreiben oder als grünes Design behandeln.
