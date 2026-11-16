@@ -16,6 +16,10 @@
 /.next/
 /out/
 /.static-site/
+/.static-dev/
+/.green-dev/
+/.green-site/
+/green/dist/
 /dist/
 
 # production

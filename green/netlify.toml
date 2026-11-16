@@ -1,0 +1,19 @@
+# Vorbereitete Konfiguration für einen SPÄTEREN Deploy aus dem Repository-Stamm.
+# Die aktive netlify.toml im Stamm bleibt unverändert.
+[build]
+  command = "npm run build:green"
+  publish = "green/dist"
+  functions = "green/netlify/functions"
+
+[build.environment]
+  NODE_VERSION = "22"
+  NETLIFY_NEXT_PLUGIN_SKIP = "true"
+
+[functions]
+  node_bundler = "esbuild"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

@@ -41,6 +41,11 @@
   ],
   "exclude": [
     "node_modules",
-    ".static-site"
+    ".static-site",
+    ".static-dev",
+    ".green-dev",
+    ".green-site",
+    "green",
+    "static/overrides"
   ]
 }

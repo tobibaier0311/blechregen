@@ -5,6 +5,9 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
+    "dev:green": "node scripts/green-site.mjs --dev",
+    "build:green": "node scripts/green-site.mjs --build",
+    "test:green-events": "node --test tests/green-events.test.mjs",
     "build:static": "node scripts/build-static.mjs",
     "build": "cross-env NODE_OPTIONS=\"--no-deprecation --max-old-space-size=8000\" next build --webpack",
     "design:v1": "bash scripts/switch-design.sh design-v1",
@@ -24,6 +27,7 @@
     "test:int": "cross-env NODE_OPTIONS=--no-deprecation vitest run --config ./vitest.config.mts"
   },
   "dependencies": {
+    "parse5": "8.0.1",
     "@payloadcms/db-postgres": "3.86.0",
     "@payloadcms/next": "3.86.0",
     "@payloadcms/richtext-lexical": "3.86.0",

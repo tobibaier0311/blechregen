@@ -1,10 +1,14 @@
 [build]
-  command = "npm run build:static"
-  publish = "dist"
+  command = "npm run build:green"
+  publish = "green/dist"
+  functions = "green/netlify/functions"
 
 [build.environment]
   NODE_VERSION = "22"
   NETLIFY_NEXT_PLUGIN_SKIP = "true"
+
+[functions]
+  node_bundler = "esbuild"
 
 [[headers]]
   for = "/*"
